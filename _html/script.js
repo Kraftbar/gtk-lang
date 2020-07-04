@@ -32,6 +32,9 @@ function pros(csv){
       }
       words_length=i;
     }
+
+    document.getElementById('output').innerHTML = "text read inn, ready to start^^".bold();
+
 }
 
 
@@ -59,12 +62,17 @@ function processFile(){
 
 
 function nextItem() {
-    k = k + 1; // increase i by one
-    k = k % words_length; // if we've gone too high, start from `0` again
+    document.getElementById('feedback').innerHTML="<br/>";
     
-    return words[k].join(" "); // give us back the item of where we are now
+    k = k + 1; 
+    k = k % words_length; 
+
+    return words[k].join(" "); 
 }
 function prevItem() {
+    document.getElementById('feedback').innerHTML="<br/>";
+
+
     if (k === 0) { // i would become 0
         k = words_length; // so put it at the other end of the array
     }
