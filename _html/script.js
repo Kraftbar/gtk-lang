@@ -168,40 +168,40 @@ function zenFunction() {
     var hide4 = document.getElementById("prosLabel");
     var hide5 = document.getElementById("prosButton");
     var hide6 = document.getElementById("myTextarea");
-    if (hide0.style.display === "none") {
+    if (hide0.style.display == "none") {
         hide0.style.display = "block";
       } else {
         hide0.style.display = "none";
       }
   
-    if (hide1.style.display === "none") {
+    if (hide1.style.display == "none") {
       hide1.style.display = "block";
     } else {
       hide1.style.display = "none";
     }
     
-    if (hide2.style.display === "none") {
+    if (hide2.style.display == "none") {
         hide2.style.display = "block";
       } else {
         hide2.style.display = "none";
       }
       
-      if (hide3.style.display === "none") {
+      if (hide3.style.display == "none") {
         hide3.style.display = "block";
       } else {
         hide3.style.display = "none";
       }
-      if (hide4.style.display === "none") {
+      if (hide4.style.display == "none") {
         hide4.style.display = "block";
       } else {
         hide4.style.display = "none";
       }
-      if (hide5.style.display === "none") {
+      if (hide5.style.display == "none") {
         hide5.style.display = "block";
       } else {
         hide5.style.display = "none";
       }
-      if (hide6.style.display === "none") {
+      if (hide6.style.display == "none") {
         hide6.style.display = "block";
       } else {
         hide6.style.display = "none";
