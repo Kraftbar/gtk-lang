@@ -1,3 +1,7 @@
+// TODO
+//   - lower / capital
+
+
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 ctx.font = "30px Arial";
@@ -80,6 +84,9 @@ function nextItem() {
     k = k + 1; 
     k = k % words_length; 
 
+    var inputF = document.getElementById("typed_word"); 
+    inputF.value = ""; 
+
     return  words[k][0]+" "+words[k][1];
 }
 function prevItem() {
@@ -91,6 +98,9 @@ function prevItem() {
     }
     k = k - 1; // decrease by one
     
+    var inputF = document.getElementById("typed_word"); 
+    inputF.value = ""; 
+
     return words[k][0]+" "+words[k][1]; // give us back the item of where we are now
 }
 function checkItem() {
@@ -98,12 +108,13 @@ function checkItem() {
 
   var inputVal = document.getElementById("typed_word").value;
   var answer=words[k][2];
-  console.log();
   if(inputVal==answer){              
-      return prossAswer(inputVal,answer).concat(" ✓");
-       correct_flag=1;
+    correct_flag=1+ correct_flag ;
+    
 
+    return prossAswer(inputVal,answer).concat(" ✓");
   }else{
+    correct_flag=0;
       return  prossAswer(inputVal,answer).concat(" ☓");
   }
   
@@ -146,6 +157,11 @@ typed_word.addEventListener("keyup", function(event) {
   if (event.keyCode === 13) {
     event.preventDefault();
     document.getElementById('feedback').textContent=checkItem();
+    console.log(correct_flag);
+    if(correct_flag>1){
+      document.getElementById('output').textContent = nextItem();
+    }
+
     }
     
 });
