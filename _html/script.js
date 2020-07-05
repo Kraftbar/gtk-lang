@@ -98,13 +98,13 @@ function checkItem() {
 
   var inputVal = document.getElementById("typed_word").value;
   var answer=words[k][2];
-  console.log(prossAswer(inputVal,answer));
+  console.log();
   if(inputVal==answer){              
-      return "✓";
+      return prossAswer(inputVal,answer).concat(" ✓");
        correct_flag=1;
 
   }else{
-      return  "☓";
+      return  prossAswer(inputVal,answer).concat(" ☓");
   }
   
 
