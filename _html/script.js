@@ -33,8 +33,9 @@ function pros(csv){
       words_length=i;
     }
 
-    document.getElementById('output').innerHTML = "text read inn, ready to start^^".bold();
-
+//    document.getElementById('output').innerHTML = "text read inn, ready to start^^".bold();
+    document.getElementById('output').innerHTML = words[k].join(" ");
+    
 }
 
 
