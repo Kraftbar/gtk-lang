@@ -33,7 +33,6 @@ function pros(csv){
       words_length=i;
     }
 
-//    document.getElementById('output').innerHTML = "text read inn, ready to start^^".bold();
     document.getElementById('output').innerHTML = words[k].join(" ");
     
 }
@@ -56,8 +55,22 @@ function processFile(){
 }
 
 
+// Feedback correct 
+function prossAswer(userInput, solution){
+  var string_feedback="";
+  for (var i = 0; i < solution.length; i++) {
+      if(userInput.charAt(i)==solution.charAt(i)){
+          string_feedback=string_feedback.concat(userInput.charAt(i));
+      }else{
+          string_feedback=string_feedback.concat("_");
+      }
+      
+  }
+  return string_feedback;
+}
+
 // -----------------------
-// display array 
+// display word array 
 // -----------------------
 
 
@@ -82,16 +95,18 @@ function prevItem() {
 }
 function checkItem() {
 
-    var inputVal = document.getElementById("typed_word").value;
-    if(inputVal==words[k][2]){              
 
-        return "✓";
-         correct_flag=1;
+  var inputVal = document.getElementById("typed_word").value;
+  var answer=words[k][2];
+  console.log(prossAswer(inputVal,answer));
+  if(inputVal==answer){              
+      return "✓";
+       correct_flag=1;
 
-    }else{
-        return  "☓";
-    }
-
+  }else{
+      return  "☓";
+  }
+  
 
 }
 
@@ -134,3 +149,68 @@ typed_word.addEventListener("keyup", function(event) {
     }
     
 });
+
+
+
+
+
+
+// -----------------------
+// Zen mode 
+// -----------------------
+
+function zenFunction() {
+    var hide0 = document.getElementById("myCanvas");
+
+    var hide1 = document.getElementById("fileLabel");
+    var hide2 = document.getElementById("myFile");
+    var hide3 = document.getElementById("prosFileButton");
+    var hide4 = document.getElementById("prosLabel");
+    var hide5 = document.getElementById("prosButton");
+    var hide6 = document.getElementById("myTextarea");
+    if (hide0.style.display === "none") {
+        hide0.style.display = "block";
+      } else {
+        hide0.style.display = "none";
+      }
+  
+    if (hide1.style.display === "none") {
+      hide1.style.display = "block";
+    } else {
+      hide1.style.display = "none";
+    }
+    
+    if (hide2.style.display === "none") {
+        hide2.style.display = "block";
+      } else {
+        hide2.style.display = "none";
+      }
+      
+      if (hide3.style.display === "none") {
+        hide3.style.display = "block";
+      } else {
+        hide3.style.display = "none";
+      }
+      if (hide4.style.display === "none") {
+        hide4.style.display = "block";
+      } else {
+        hide4.style.display = "none";
+      }
+      if (hide5.style.display === "none") {
+        hide5.style.display = "block";
+      } else {
+        hide5.style.display = "none";
+      }
+      if (hide6.style.display === "none") {
+        hide6.style.display = "block";
+      } else {
+        hide6.style.display = "none";
+      }
+      var alignValue = "center";
+
+      var div1 = document.getElementById ("input_output");
+      var div2 = document.getElementById ("buttons");
+      div1.style.textAlign = "center";
+      div2.style.textAlign = "center";
+
+  }
