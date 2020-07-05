@@ -32,8 +32,7 @@ function pros(csv){
       }
       words_length=i;
     }
-
-    document.getElementById('output').innerHTML = words[k].join(" ");
+    document.getElementById('output').innerHTML = words[k][0]+" "+words[k][1];
     
 }
 
@@ -81,7 +80,7 @@ function nextItem() {
     k = k + 1; 
     k = k % words_length; 
 
-    return words[k].join(" "); 
+    return  words[k][0]+" "+words[k][1];
 }
 function prevItem() {
     document.getElementById('feedback').innerHTML="<br/>";
@@ -91,7 +90,8 @@ function prevItem() {
         k = words_length; // so put it at the other end of the array
     }
     k = k - 1; // decrease by one
-    return words[k].join(" "); // give us back the item of where we are now
+    
+    return words[k][0]+" "+words[k][1]; // give us back the item of where we are now
 }
 function checkItem() {
 
@@ -157,6 +157,7 @@ typed_word.addEventListener("keyup", function(event) {
 
 // -----------------------
 // Zen mode 
+// todo: refactor, looks ugly now
 // -----------------------
 
 function zenFunction() {
