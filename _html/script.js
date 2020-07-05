@@ -157,7 +157,7 @@ typed_word.addEventListener("keyup", function(event) {
   if (event.keyCode === 13) {
     event.preventDefault();
     document.getElementById('feedback').textContent=checkItem();
-    console.log(correct_flag);
+
     if(correct_flag>1){
       document.getElementById('output').textContent = nextItem();
     }
