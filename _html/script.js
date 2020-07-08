@@ -62,17 +62,35 @@ function processText(){
 
 
 // Feedback correct 
-function prossAswer(userInput, solution){
-  var string_feedback="";
-  for (var i = 0; i < solution.length; i++) {
+function prossFeedback(userInput, solutions){
+  highestMatchScores=[];
+  feedbacks=[];
+
+  for (j = 0; j < solutions.length; j++) {
+
+    solution=solutions[j];
+
+    matchScore=0;
+    var feedback="";
+
+    for (var i = 0; i < solution.length; i++) {
       if(userInput.charAt(i)==solution.charAt(i)){
-          string_feedback=string_feedback.concat(userInput.charAt(i));
+        matchScore=matchScore+1;
+        feedback=feedback.concat(userInput.charAt(i));
       }else{
-          string_feedback=string_feedback.concat("_");
+        feedback=feedback.concat("_");
       }
-      
+    }
+
+    feedbacks.push(feedback);
+    highestMatchScores.push(matchScore);
   }
-  return string_feedback;
+
+  // find the highest match
+  var sorted = [...highestMatchScores].sort((a,b) => b - a);
+  highestMatchIndex=highestMatchScores.indexOf(sorted[0]);
+
+  return feedbacks[highestMatchIndex];
 }
 
 // -----------------------
@@ -108,26 +126,18 @@ function prevItem() {
 }
 function checkItem() {
 
-
   var inputVal = document.getElementById("typed_word").value;
   var answer=words[k][2].replace(/ *\([^)]*\) */g, ""); //   replace (*)
-  var answers=answer.split(",");
-    for (i = 0; i < answers.length; i++) {
-      console.log(answers[i])
-      if(inputVal==answers[i].trim()){              
-        correct_flag=1+ correct_flag ;
-        
-    
-        return answer.concat(" ✓");
-      }
-      
-    
+  var answers=answer.split(", ");
 
+  feedback=prossFeedback(inputVal,answers);
+    if(inputVal==feedback){              
+      correct_flag=correct_flag+1;
+      return feedback.concat(" ✓");
     }
+      correct_flag=0;
   
-    correct_flag=0;
-    return  prossAswer(inputVal,answer).concat(" ☓");
-
+    return  feedback.concat(" ☓");
 }
 
 
@@ -166,7 +176,7 @@ typed_word.addEventListener("keyup", function(event) {
   if (event.keyCode === 13) {
     event.preventDefault();
     document.getElementById('feedback').textContent=checkItem();
-
+    console.log(correct_flag);
     if(correct_flag>1){
       document.getElementById('output').textContent = nextItem();
     }
