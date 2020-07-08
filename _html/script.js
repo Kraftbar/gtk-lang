@@ -19,6 +19,9 @@ correct_flag=0;
 // file/ txts handeling 
 // -----------------------
 
+
+
+
 function pros(csv){
     //reset
     k=0;
@@ -52,7 +55,7 @@ function processFile(){
     }
   }
 
-  function processText(){
+function processText(){
     var x = document.getElementById("myTextarea").value;
     pros(x)
 }
@@ -107,17 +110,23 @@ function checkItem() {
 
 
   var inputVal = document.getElementById("typed_word").value;
-  var answer=words[k][2];
-  if(inputVal==answer){              
-    correct_flag=1+ correct_flag ;
+  var answer=words[k][2].replace(/ *\([^)]*\) */g, ""); //   replace (*)
+  var answers=answer.split(",");
+    for (i = 0; i < answers.length; i++) {
+      console.log(answers[i])
+      if(inputVal==answers[i].trim()){              
+        correct_flag=1+ correct_flag ;
+        
+    
+        return answer.concat(" ✓");
+      }
+      
     
 
-    return prossAswer(inputVal,answer).concat(" ✓");
-  }else{
-    correct_flag=0;
-      return  prossAswer(inputVal,answer).concat(" ☓");
-  }
+    }
   
+    correct_flag=0;
+    return  prossAswer(inputVal,answer).concat(" ☓");
 
 }
 
