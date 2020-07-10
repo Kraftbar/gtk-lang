@@ -1,5 +1,6 @@
 // TODO
 //   - lower / capital
+//   - switch input / output 
 
 
 var c = document.getElementById("myCanvas");
