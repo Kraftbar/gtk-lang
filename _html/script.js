@@ -12,9 +12,11 @@ ctx.fillText("Hello World", 10, 50);
 // globals 
 
 var words = new Array(1000);
+var words_pinyin_woAccents = new Array(1000);
 var words_empt=words;
 var words_length=0;
 correct_flag=0;
+standardLang_flag=1;
 
 // -----------------------
 // file/ txts handeling 
@@ -28,8 +30,14 @@ function pros(csv){
     k=0;
     words=words_empt;
 
+    // remove trailing newline 
+
+    csv=csv.replace(/\n+$/, "");
+
     var rows = csv.split('\n');
-    rows.pop(); // last one is null
+
+
+
     for (var i = 0; i < rows.length; i++) {
       cols = rows[i].split('\t');
       words[i] = new Array(3);
@@ -38,6 +46,8 @@ function pros(csv){
         console.log(value)
         words[i][j] = value;
       }
+      woAccents=cols[1].normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+      words_pinyin_woAccents[i]=woAccents;
       words_length=i;
     }
     document.getElementById('output').innerHTML = words[k][0]+" "+words[k][1];
@@ -188,7 +198,27 @@ typed_word.addEventListener("keyup", function(event) {
 
 
 
+// -----------------------
+// Misc. 
+// -----------------------
 
+
+function changeLangFunction() {
+
+    // check lang
+    if(standardLang_flag){}
+    else{}
+
+    // change lang 
+
+    // - change el. 2->0
+    // - emt. :  1.= ""
+
+
+    // toggle boolean
+    standardLang_flag=!standardLang_flag;
+
+}
 
 
 // -----------------------
