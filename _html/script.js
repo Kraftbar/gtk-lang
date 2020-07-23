@@ -208,30 +208,18 @@ function changeLangFunction() {
 
     words=words_empt;
 
-    for (var i = 0; i < words_buffer.length; i++) {
-        [words[i][0], words[i][2]] = [words[i][2], words[i][0]];
-        if(standardLang_flag){ 
+    for (var i = 0; i < words_length; i++) {
+        if(standardLang_flag){
         words_buffer[i]=words[i][1];
         words[i][1]="";
+
         }else{
+
         words[i][1]=words_buffer[i];
         }
+        [words[i][0], words[i][2]] = [words[i][2], words[i][0]];
 
     }
-
-    // check lang
-    if(standardLang_flag){}
-    else{}
-
-
-
-    for (i = 0; i < words.length; i++) {
-
-    }
-    // change lang 
-
-    // - change el. 2->0
-    // - emt. :  1.= ""
 
 
     // toggle boolean
