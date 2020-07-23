@@ -12,6 +12,7 @@ ctx.fillText("Hello World", 10, 50);
 // globals 
 
 var words = new Array(1000);
+var words_buffer = new Array(1000);
 var words_pinyin_woAccents = new Array(1000);
 var words_empt=words;
 var words_length=0;
@@ -205,10 +206,28 @@ typed_word.addEventListener("keyup", function(event) {
 
 function changeLangFunction() {
 
+    words=words_empt;
+
+    for (var i = 0; i < words_buffer.length; i++) {
+        [words[i][0], words[i][2]] = [words[i][2], words[i][0]];
+        if(standardLang_flag){ 
+        words_buffer[i]=words[i][1];
+        words[i][1]="";
+        }else{
+        words[i][1]=words_buffer[i];
+        }
+
+    }
+
     // check lang
     if(standardLang_flag){}
     else{}
 
+
+
+    for (i = 0; i < words.length; i++) {
+
+    }
     // change lang 
 
     // - change el. 2->0
