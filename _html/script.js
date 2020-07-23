@@ -229,11 +229,11 @@ function changeLangFunction() {
 
 
 // -----------------------
-// Zen mode 
+// focus mode 
 // todo: refactor, looks ugly now
 // -----------------------
 
-function zenFunction() {
+function focusFunction() {
     var hide0 = document.getElementById("myCanvas");
 
     var hide1 = document.getElementById("fileLabel");
